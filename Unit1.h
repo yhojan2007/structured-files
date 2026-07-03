@@ -32,7 +32,6 @@ __published:	// IDE-managed Components
 	TMenuItem *MOdificasiones2;
 	TMenuItem *cambiaraminucculasNOmdelosabril1;
 	TMenuItem *eliminarlosregquetenganmasde2oensunombre1;
-	TButton *Button3;
 	TButton *Button5;
 	TLabel *Label5;
 	TEdit *Edit6;
@@ -49,6 +48,7 @@ __published:	// IDE-managed Components
 	TMenuItem *modelosdeexamen1;
 	TMenuItem *actualizarlosnombreala1raMayuscula1;
 	TMenuItem *listadodelosregqueempizenen501;
+	TMenuItem *aumentar1diaalosreg1;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
@@ -69,6 +69,7 @@ __published:	// IDE-managed Components
 	void __fastcall listadodemanetadesensendente1Click(TObject *Sender);
 	void __fastcall actualizarlosnombreala1raMayuscula1Click(TObject *Sender);
 	void __fastcall listadodelosregqueempizenen501Click(TObject *Sender);
+	void __fastcall aumentar1diaalosreg1Click(TObject *Sender);
 
 
 private:	// User declarations

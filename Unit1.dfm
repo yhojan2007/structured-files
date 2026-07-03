@@ -89,7 +89,7 @@ object Form1: TForm1
   end
   object Button1: TButton
     Left = 573
-    Top = 423
+    Top = 456
     Width = 169
     Height = 41
     Caption = 'ver bytes de cada campo'
@@ -142,15 +142,6 @@ object Form1: TForm1
     TabOrder = 7
     OnClick = Button4Click
   end
-  object Button3: TButton
-    Left = 622
-    Top = 392
-    Width = 75
-    Height = 25
-    Caption = 'Button3'
-    TabOrder = 8
-    OnClick = Button3Click
-  end
   object Button5: TButton
     Left = 18
     Top = 485
@@ -158,7 +149,7 @@ object Form1: TForm1
     Height = 25
     Caption = 'modificar la structura'
     Enabled = False
-    TabOrder = 9
+    TabOrder = 8
     OnClick = Button5Click
   end
   object Edit6: TEdit
@@ -166,7 +157,7 @@ object Form1: TForm1
     Top = 264
     Width = 193
     Height = 23
-    TabOrder = 10
+    TabOrder = 9
   end
   object Button6: TButton
     Left = 18
@@ -174,41 +165,41 @@ object Form1: TForm1
     Width = 113
     Height = 46
     Caption = 'Eliminado Logico'
-    TabOrder = 11
+    TabOrder = 10
     OnClick = Button6Click
   end
   object Button7: TButton
-    Left = 573
-    Top = 472
-    Width = 169
-    Height = 33
+    Left = 218
+    Top = 456
+    Width = 179
+    Height = 41
     Caption = 'listado completo'
-    TabOrder = 12
+    TabOrder = 11
     OnClick = Button7Click
   end
   object Button8: TButton
-    Left = 416
-    Top = 476
-    Width = 131
-    Height = 25
-    Caption = 'crear indice pro codigo'
-    TabOrder = 13
+    Left = 218
+    Top = 327
+    Width = 179
+    Height = 46
+    Caption = 'crear indice por codigo'
+    TabOrder = 12
     OnClick = Button8Click
   end
   object Button9: TButton
-    Left = 416
-    Top = 444
-    Width = 129
-    Height = 26
+    Left = 218
+    Top = 391
+    Width = 179
+    Height = 50
     Caption = 'crear indice por nombre'
-    TabOrder = 14
+    TabOrder = 13
     OnClick = Button9Click
   end
   object MainMenu1: TMainMenu
     Left = 56
     Top = 48
     object MOdificasiones1: TMenuItem
-      Caption = 'MOdificasiones'
+      Caption = 'Modificasiones'
       object MOdificasiones2: TMenuItem
         Caption = 'cambiar a mayusculas los nombres'
         OnClick = MOdificasiones2Click
@@ -253,6 +244,10 @@ object Form1: TForm1
       object listadodelosregqueempizenen501: TMenuItem
         Caption = 'listado de los reg que empizen en 50'
         OnClick = listadodelosregqueempizenen501Click
+      end
+      object aumentar1diaalosreg1: TMenuItem
+        Caption = 'aumentar 1 dia a los reg'
+        OnClick = aumentar1diaalosreg1Click
       end
     end
   end

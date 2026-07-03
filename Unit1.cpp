@@ -1,4 +1,4 @@
-ï»¿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -539,8 +539,8 @@ void __fastcall TForm1::listadodemanetadesensendente1Click(TObject *Sender)
 
 // actualizar el reg de Alumnos de los nombres a la 1ra myuscula y lo demas en miniscula
 char ConvertiToMayuscula(char x){
-AnsiString min="abcdefghijklmnopqrstuvwxyz";
-AnsiString may="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+AnsiString min="abcdefghijklmnopqrstuvwxyzáéíóúüñ";
+AnsiString may="ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ";
 byte p=min.Pos(x);
 	if (p>0) {
 		x=may[p];
@@ -548,8 +548,8 @@ byte p=min.Pos(x);
 return x;;
 }
 char ConvertiToMinuscula(char x){
-AnsiString min="abcdefghijklmnopqrstuvwxyz";
-AnsiString may="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+AnsiString min="abcdefghijklmnopqrstuvwxyzáéíóúüñ";
+AnsiString may="ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ";
 byte p=may.Pos(x);
 	if (p>0) {
 		x=min[p];
@@ -557,7 +557,7 @@ byte p=may.Pos(x);
 return x;
 }
 bool EsLetra(char x){
-AnsiString let="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+AnsiString let="ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑabcdefghijklmnopqrstuvwxyzáéíóúüñ";
 return let.Pos(x)>0;
 }
 AnsiString PrimeraPalMayus(AnsiString x) {
@@ -646,6 +646,41 @@ void __fastcall TForm1::listadodelosregqueempizenen501Click(TObject *Sender)
 	   f.close(); t.close();
 	   ShowMessage("listado creado");
    }
+}
+//---------------------------------------------------------------------------
+// aumentar un dia a los registros Alumnos
+
+void __fastcall TForm1::aumentar1diaalosreg1Click(TObject *Sender)
+{
+	RegAlumno reg;
+	fstream f(nom.c_str(),ios::binary|ios::in|ios::out);
+	if (!f.fail()) {
+		while (!f.eof())
+		{
+			f.read((char*)&reg,sizeof(reg));
+			if (!f.eof()) {
+				if (reg.marca!='*') {
+				   f.seekg(-sizeof(reg),ios::cur);
+				   if (reg.fecha.dia<31) {
+					   reg.fecha.dia=reg.fecha.dia+1;
+				   } else {
+					   if (reg.fecha.mes<12) {
+						   reg.fecha.mes=reg.fecha.mes+1;
+						   reg.fecha.dia=1;
+					   } else {
+						   reg.fecha.ano=reg.fecha.ano+1;
+						   reg.fecha.dia=1;
+						   reg.fecha.mes=1;
+					   }
+				   }
+				   f.write((char*)&reg,sizeof(reg));
+				   f.seekg(sizeof(reg), ios::cur);
+				   f.seekg(-sizeof(reg), ios::cur);
+				}
+			}
+		}
+		f.close(); ShowMessage("se aumento un dia ");
+	}
 }
 //---------------------------------------------------------------------------
 
