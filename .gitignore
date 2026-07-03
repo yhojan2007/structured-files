@@ -1,0 +1,35 @@
+# Archivos generados por el compilador y entorno C++ Builder / RAD Studio
+__history/
+__recovery/
+Win32/
+Win64/
+Debug/
+Release/
+
+# Archivos temporales y locales del proyecto
+*.local
+*.identcache
+*.tds
+*.~*
+*.dcu
+*.obj
+*.o
+*.pch
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.map
+*.ipch
+
+# Archivos de datos y reportes generados en tiempo de ejecución
+*.dat
+*.idx
+*.csv
+*.txt
+*.tmp
+*.log
+
+# Excepciones
+!requirements.txt
+

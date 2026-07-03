@@ -1,0 +1,20 @@
+# ==============================================================================
+# Requisitos del Proyecto: Archivos Estructurados (C++ Builder)
+# ==============================================================================
+# Este proyecto está desarrollado en C++ utilizando Embarcadero C++Builder (VCL).
+# No requiere paquetes de Python (pip) o gestores de dependencias de node/npm,
+# pero a continuación se detallan los requisitos del entorno de desarrollo.
+
+# Entorno de Desarrollo Integrado (IDE) y Compilador:
+# - Embarcadero C++Builder (RAD Studio) versión 10.0 o superior (Recomendado: C++Builder 12 Athens)
+# - Compilador compatible con el estándar C++11 o superior (Clang-enhanced C++ Compiler de RAD Studio)
+
+# Framework de Interfaz Gráfica:
+# - VCL (Visual Component Library) de Embarcadero (para la interfaz gráfica de usuario en Windows)
+
+# Sistema Operativo compatible:
+# - Windows 7 / 8 / 10 / 11 (32-bit y 64-bit)
+
+# Configuración del Entorno:
+# - Asegurarse de que las rutas locales de los archivos definidos en el código (por ejemplo, en FormCreate)
+#   coincidan con el directorio de trabajo donde se ejecute el programa.
