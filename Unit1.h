@@ -49,6 +49,8 @@ __published:	// IDE-managed Components
 	TMenuItem *actualizarlosnombreala1raMayuscula1;
 	TMenuItem *listadodelosregqueempizenen501;
 	TMenuItem *aumentar1diaalosreg1;
+	TButton *Button11;
+	TMenuItem *N111;
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
@@ -70,6 +72,8 @@ __published:	// IDE-managed Components
 	void __fastcall actualizarlosnombreala1raMayuscula1Click(TObject *Sender);
 	void __fastcall listadodelosregqueempizenen501Click(TObject *Sender);
 	void __fastcall aumentar1diaalosreg1Click(TObject *Sender);
+	void __fastcall Button11Click(TObject *Sender);
+	void __fastcall N111Click(TObject *Sender);
 
 
 private:	// User declarations

@@ -195,6 +195,15 @@ object Form1: TForm1
     TabOrder = 13
     OnClick = Button9Click
   end
+  object Button11: TButton
+    Left = 528
+    Top = 395
+    Width = 201
+    Height = 41
+    Caption = 'Reconstruir a partir de listado'
+    TabOrder = 14
+    OnClick = Button11Click
+  end
   object MainMenu1: TMainMenu
     Left = 56
     Top = 48
@@ -248,6 +257,10 @@ object Form1: TForm1
       object aumentar1diaalosreg1: TMenuItem
         Caption = 'aumentar 1 dia a los reg'
         OnClick = aumentar1diaalosreg1Click
+      end
+      object N111: TMenuItem
+        Caption = 'pregunta 3'
+        OnClick = N111Click
       end
     end
   end

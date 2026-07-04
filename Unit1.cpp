@@ -596,7 +596,7 @@ void __fastcall TForm1::actualizarlosnombreala1raMayuscula1Click(TObject *Sender
 		  }
 	  }
 	  f.close();
-      ShowMessage("datos modificados");
+	  ShowMessage("datos modificados");
   }
 }
 //---------------------------------------------------------------------------
@@ -610,7 +610,7 @@ byte ContDigit(Cardinal n) {
 		   cont++;
 		   n=n/10;
 		}
-    }
+	}
 	return cont;
 }
 bool Veri1NumInitConOtro(Cardinal Ngrande, byte Nbus) {
@@ -638,7 +638,7 @@ void __fastcall TForm1::listadodelosregqueempizenen501Click(TObject *Sender)
 					 for (byte i=1; i <=n; i++) {
 						   t.put(linea[i]);
 					 }
-					t.put(10);	
+					t.put(10);
 				 }
 			 }
 		   }
@@ -683,4 +683,111 @@ void __fastcall TForm1::aumentar1diaalosreg1Click(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
+//hacer un proceso para reconstruir un registro a partir de un listado
+//pregunta 2
+void __fastcall TForm1::Button11Click(TObject *Sender)
+{
+	RegAlumno reg;
+	AnsiString list = ruta + "Listado.csv";
+	fstream t(list.c_str(), ios::binary | ios::in);
+	fstream f(nom.c_str(), ios::binary | ios::out);
+
+	if (!t.fail() && !f.fail()) {
+		AnsiString aux="";
+		char c;
+		byte nroCampo = 1;
+
+		while (!t.eof()) {
+			t.read((char*)&c, sizeof(c));
+
+			if (!t.eof()) {
+				if (c == ',' || c == 10) {
+
+					if (nroCampo == 1) {
+						reg.cod = StrToInt(aux);
+					}
+					else if (nroCampo == 2) {
+						strcpy(reg.nom, aux.c_str());
+					}
+					else if (nroCampo == 3) {
+						reg.fecha.dia = StrToInt(aux);
+					}
+					else if (nroCampo == 4) {
+						reg.fecha.mes = StrToInt(aux);
+					}
+					else if (nroCampo == 5) {
+						reg.fecha.ano = StrToInt(aux);
+					}
+					else if (nroCampo == 6) {
+						reg.telefono = StrToInt(aux);
+					}
+					aux = "";
+
+					if (c == ',') {
+						nroCampo++;
+					}
+					else if (c == 10) {
+						reg.marca = ' ';
+						f.write((char*)&reg, sizeof(reg));
+						nroCampo = 1;
+					}
+				}
+				else if (c != 13) {
+					aux = aux + c;
+				}
+			}
+		}
+		f.close();
+		t.close();
+
+		ShowMessage("registro de con listado");
+	}
+}
+//---------------------------------------------------------------------------
+//pregunta 3
+
+void __fastcall TForm1::N111Click(TObject *Sender)
+{
+	RegIdxCod regi, regiSiguiente;
+	RegAlumno reg;
+
+	fstream fi(nomCod.c_str(), ios::binary | ios::in | ios::ate);
+	fstream f(nom.c_str(), ios::binary | ios::in | ios::out);
+
+	if (!fi.fail() && !f.fail()) {
+		long int tamanoIdx = fi.tellg();
+		int totalReg = tamanoIdx / sizeof(regi);
+		if (totalReg > 0) {
+			for (int i = 0; i < totalReg; i++) {
+				fi.seekg(i * sizeof(regi));
+				fi.read((char*)&regi, sizeof(regi));
+				Word codSiguiente;
+				if (i < totalReg - 1) {
+					fi.read((char*)&regiSiguiente, sizeof(regiSiguiente));
+					codSiguiente = regiSiguiente.cod;
+				} else {
+					fi.seekg(0);
+					fi.read((char*)&regiSiguiente, sizeof(regiSiguiente));
+					codSiguiente = regiSiguiente.cod;
+				}
+
+				f.seekg(regi.ref);
+				f.read((char*)&reg, sizeof(reg));
+				reg.telefono = codSiguiente;
+				AnsiString nombreFinal = PrimeraPalMayus(reg.nom);
+				strcpy(reg.nom, nombreFinal.c_str());
+				f.seekg(regi.ref);
+				f.write((char*)&reg, sizeof(reg));
+				f.seekg(sizeof(reg), ios::cur);
+				f.seekg(-sizeof(reg), ios::cur);
+			}
+			ShowMessage("Archivo modificado");
+		}
+		fi.close();
+		f.close();
+	}
+}
+//---------------------------------------------------------------------------
+
+
 
